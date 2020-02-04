@@ -1,35 +1,129 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-    
-    console.log ("************* PETSHOP DA RD*******************")
-        var cachorro= { // implementar a função
-            nome:"Menino",
+
+        console.log("************* PETSHOP DA RD*******************")
+        let pets = [
+            {
+                nome: "Bob",
+                idade: 3,
+                tipo: "passaro",
+                raca: "Papaguaio",
+                peso: 1,
+                cor: "Verde",
+                Dono: "Antonio",
+                vacinado: true,
+                serviços: ["vacinanação", "banho"]
+            },
+            {
+                nome: "Gata",
+                idade: 4,
+                tipo: "gato",
+                raça: "persa",
+                peso: 3.5,
+                cor: "preta",
+                dono: {
+                    dono: null
+                },
+                vacinado: false,
+                serviços: ['banho', 'tosa', 'castramento'],
+
+            },
+        ]
+        let cachorro = {
+            // implementar a função
+            nome: "Menino",
             idade: 8,
-            raca: "vira-lata",
+            tipo: "passaro",
+            raca: "Cachorro",
             peso: 7.5,
             cor: "Marrom",
             Dono: "Mariscleide",
-            vacinado:true,
-            serviços: ['banho', 'tosa','castramento'],
-            
+            vacinado: true,
+            serviços: ['banho', 'tosa', 'castramento'],
+
+
+        };
+
+        const vacina = cachorro => {
+            if (cachorro.vacinado) {
+                console.log("Cachorro vacinado")
+            } else {
+                cachorro.vacinado = true
+                console.log("vacina aplicada com sucesso")
+            }
+        };
+        const addpet = (nome_, idade_, raca_, peso_, dono_, cor_,
+            servicos_, vacinado_) => {
+            let petNovo = {
+
+                nome: nome_,
+                idade: idade_,
+                raca: raca_,
+                peso: peso_,
+                dono: {
+                    nome: null,
+                    idade: null,
+                },
+                cor: cor_,
+                servicos: servicos_,
+                vacinado: vacinado_,
+            }
+            pets.push(petNovo)
+            console.log("pet adicionado com sucesso")
+
         }
-        function vacina(cachorro){
-          if(cachorro.vacinado) {
-            console.log("Cachorro vacinado")
-        } else { 
-            cachorro.vacinado=true
-            console.log("vacina aplicada com sucesso")
+        console.log("*----------------------------------------------------------------------*");
+
+        const lpets = () => {
+
+            pets.forEach(function (valor, index) {
+
+                console.log("*----------------------------------------------------------------------*");
+                console.log("Nome do pet: " + valor.nome);
+                console.log("Tipo do Pet: " + valor.tipo);
+                console.log(valor.vacinado ? "Esse pet foi vacinado" : "Esse pet ainda não foi vacinado!");
+            })
+
         }
-        }
+
+
+        //let petGato = [];
+
+       // pets.forEach((pet, index) => {
+
+           // if (pet.tipo == "gato") {
+
+          //      petGato.push(pet);
+           // }
+       // })
+            const filtroPetsGatos = () =>{
+                let lista = pets.filter(function(pet,index){
+                    
+                    return pet.tipo =="gato"
+
+                })
+             
+            }
+            const vacinaGeral= () =>{
+                let retorno= pets.map(function(pet,index){
+                    pet.vacina= true;
+                   return pet
+                }) 
+                return retorno
+            }
+
 
     </script>
 </body>
+
 </html>
